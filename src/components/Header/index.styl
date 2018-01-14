@@ -1,0 +1,106 @@
+@import "../../variables"
+// Header and Search
+
+.header-header,
+.header-nav
+  width: 100%
+  height: 50px
+  position: fixed
+  top: 0
+  left: 0
+
+.header-header
+  z-index: 5
+  background: black
+  box-shadow: 0 2px 3px black(.2)
+
+  .header-nav
+    padding: 10px 15px
+    background: $blue
+    {fadeIn}
+
+  h1
+    margin-top: 8px
+    margin-left: -8px
+    float: left
+
+    a
+      color: white
+      padding: 5px 8px
+
+      &.nav-about
+        margin-left: 1px
+        color: $grey-drk
+
+      &:hover
+        opacity: .5
+
+  input
+    width: 50%
+    margin-top: 1px
+    padding: 4px 30px
+    float: right
+    background: white url(../../images/icon-search.svg) no-repeat 8px 6px
+    background-size: 14px 14px
+    border-radius: 4px
+    border: 1px solid white
+    font-size: 16px
+    font-family: $font-family-georgia
+    font-style: italic
+    line-height: 1
+
+    &::-webkit-input-placeholder
+      padding-top: 2px
+      font-size: 14px
+    &::-moz-placeholder
+      font-size: 14px
+      color: #666
+
+    &:focus
+      outline: none
+
+  .clear
+    width: 13px
+    height: @width
+    {centerVert}
+    right: 22px
+    background: url(../../images/icon-close-grey-red.svg) no-repeat 0 0
+    background-size: 13px 26px
+    border: none
+    cursor: pointer
+
+    &:hover
+      background-position: 0 -13px
+
+    &:focus
+      outline: none
+
+
+// Search collapse/expand for small screens
+@media (max-width: 500px)
+
+  .header-header
+
+    .clear
+      display: none
+
+    input
+      width: 30px
+      margin-left: 15px
+      padding-right: 0
+      position: absolute
+      right: 15px
+      transition(width ease-out .2s)
+
+      &:hover
+        cursor: pointer
+
+      &:focus
+        width: calc(100% - 30px)
+        padding-right: 30px
+
+        &:hover
+          cursor: default
+
+        & + .clear
+          display: block

@@ -1,10 +1,12 @@
 import React from "react";
 import Link from "gatsby-link";
 import AirportList from "../components/AirportList";
+import Header from "../components/Header";
 
 const IndexPage = ({ data }) => {
   return (
     <section>
+      <Header />
       <AirportList airports={data.allAirportsJson.edges} />
     </section>
   );

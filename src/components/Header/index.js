@@ -1,33 +1,30 @@
-import React from 'react'
-import Link from 'gatsby-link'
+import React, { Component } from "react";
+import Link from "gatsby-link";
+import "./index.styl";
 
-const Header = () => (
-  <div
-    style={{
-      background: 'rebeccapurple',
-      marginBottom: '1.45rem',
-    }}
-  >
-    <div
-      style={{
-        margin: '0 auto',
-        maxWidth: 960,
-        padding: '1.45rem 1.0875rem',
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: 'white',
-            textDecoration: 'none',
-          }}
-        >
-          Gatsby
-        </Link>
-      </h1>
-    </div>
-  </div>
-)
+class Header extends Component {
+  render() {
+    return (
+      <header className="header-header">
+        <nav className="header-nav">
+          <h1>
+            <Link to="/">Airport Codes</Link>
+            <Link className="nav-about" to="/about">
+              About
+            </Link>
+          </h1>
+          <input
+            type="text"
+            name="search"
+            autoComplete="off"
+            autoCorrect="off"
+            placeholder="Find your airport"
+          />
+          <button className="clear" type="reset" />
+        </nav>
+      </header>
+    );
+  }
+}
 
-export default Header
+export default Header;
