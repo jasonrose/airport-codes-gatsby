@@ -14,6 +14,7 @@ export default ({ data }) => {
           {props.nameEnglish || props.name}
         </title>
         <meta name="description" content={props.description} />
+        <meta property="og:type" content="website" />
         <meta
           property="og:url"
           content={metadata.baseUrl + props.fields.canonical}
@@ -22,7 +23,7 @@ export default ({ data }) => {
         <meta
           property="og:title"
           content={`${props.id.toUpperCase()} - ${props.nameEnglish ||
-            props.name}`}
+            props.name} - Airport Codes`}
         />
         <meta property="og:description" content={props.description} />
         <meta name="twitter:card" content="summary" />
@@ -48,13 +49,16 @@ export default ({ data }) => {
         <footer className="social">
           <a
             className="twitter"
-            href={`https://twitter.com/intent/tweet?url=${"FIXME"}&text=Making sense of those three-letter airport codes. ${props.id.toUpperCase()}:`}
+            href={`https://twitter.com/intent/tweet?url=${metadata.baseUrl +
+              props.fields
+                .canonical}&text=Making sense of those three-letter airport codes. ${props.id.toUpperCase()}`}
           >
             Share on <span>Twitter</span>
           </a>
           <a
             className="facebook"
-            href={`https://www.facebook.com/sharer/sharer.php?u=${"FIXME"}`}
+            href={`https://www.facebook.com/sharer/sharer.php?u=${metadata.baseUrl +
+              props.fields.canonical}`}
           >
             Share on <span>facebook</span>
           </a>
@@ -84,6 +88,7 @@ export const query = graphql`
       nameEnglish
       fields {
         canonical
+        slug
       }
     }
     site {
