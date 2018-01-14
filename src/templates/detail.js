@@ -4,9 +4,26 @@ import Helmet from "react-helmet";
 import ReactMarkdown from "react-markdown";
 import "./detail.styl";
 
-export default ({ data }) => {
+const AirportDetail = ({ data }) => {
   const props = data.airportsJson;
   const metadata = data.site.siteMetadata;
+  const srcSetLines = data.detailImage.sizes.srcSet
+    .replace(/\n/g, "")
+    .split(",")
+    .reverse()
+    .map(line => line.split(" "))
+    .map(tuple => [tuple[0], tuple[1].replace("w", "")]);
+  const backgroundImages = srcSetLines.map(tuple => (
+    <style key={tuple[0]}>{`
+    @media only screen ${
+      tuple[1] > 1240 ? "" : "and (max-width: " + tuple[1] + "px)"
+    } {
+      .detail {
+        background-image: url(${tuple[0]});
+      }
+    }
+  `}</style>
+  ));
   return (
     <section className="detail">
       <Helmet>
@@ -28,6 +45,7 @@ export default ({ data }) => {
         />
         <meta property="og:description" content={props.description} />
         <meta name="twitter:card" content="summary" />
+        {backgroundImages}
       </Helmet>
       <Link className="overlay" to="/" />
       <article className="detail-info">
@@ -75,6 +93,8 @@ export default ({ data }) => {
   );
 };
 
+export default AirportDetail;
+
 export const query = graphql`
   query AirportDetailQuery($slug: String!) {
     airportsJson(fields: { slug: { eq: $slug } }) {
@@ -95,6 +115,11 @@ export const query = graphql`
     site {
       siteMetadata {
         baseUrl
+      }
+    }
+    detailImage: imageSharp(id: { regex: "/aal/" }) {
+      sizes(maxWidth: 1240) {
+        ...GatsbyImageSharpSizes
       }
     }
   }

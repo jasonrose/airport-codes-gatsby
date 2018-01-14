@@ -12,8 +12,17 @@ module.exports = {
         path: `${__dirname}/data/`
       }
     },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "img",
+        path: `${__dirname}/photos/`
+      }
+    },
+    "gatsby-plugin-react-helmet",
+    "gatsby-plugin-sharp",
     "gatsby-plugin-stylus",
     "gatsby-transformer-json",
-    "gatsby-plugin-react-helmet"
+    "gatsby-transformer-sharp"
   ]
 };
