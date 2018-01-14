@@ -12,6 +12,7 @@ module.exports = {
         path: `${__dirname}/data/`
       }
     },
+    "gatsby-plugin-stylus",
     "gatsby-transformer-json",
     "gatsby-plugin-react-helmet"
   ]

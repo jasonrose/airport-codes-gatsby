@@ -2,6 +2,7 @@ import Link from "gatsby-link";
 import React from "react";
 import Helmet from "react-helmet";
 import ReactMarkdown from "react-markdown";
+import "./detail.styl";
 
 export default ({ data }) => {
   const props = data.airportsJson;

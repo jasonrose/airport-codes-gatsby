@@ -10,17 +10,19 @@
     "gatsby-plugin-react-helmet": "^2.0.3",
     "react-helmet": "^5.2.0"
   },
-  "keywords": ["gatsby"],
+  "keywords": [
+    "gatsby"
+  ],
   "license": "MIT",
   "main": "n/a",
   "scripts": {
-    "build":
-      "BASE_URL=https://jasonrose.github.io/airport-codes-gatsby gatsby build --prefix-paths",
+    "build": "BASE_URL=https://jasonrose.github.io/airport-codes-gatsby gatsby build --prefix-paths",
     "start": "BASE_URL=http://localhost:8000 gatsby develop",
     "predeploy": "yarn build",
     "deploy": "gh-pages -d public"
   },
   "devDependencies": {
+    "gatsby-plugin-stylus": "^1.1.13",
     "gatsby-source-filesystem": "^1.5.11",
     "gatsby-transformer-json": "^1.0.14",
     "gh-pages": "^1.1.0",
