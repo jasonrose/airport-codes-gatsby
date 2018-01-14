@@ -1,6 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: "Gatsby Default Starter"
+    title: "Gatsby Default Starter",
+    baseUrl: process.env.BASE_URL
   },
   pathPrefix: "/airport-codes-gatsby",
   plugins: [

@@ -5,7 +5,7 @@ import ReactMarkdown from "react-markdown";
 
 export default ({ data }) => {
   const props = data.airportsJson;
-  console.log(props);
+  const metadata = data.site.siteMetadata;
   return (
     <section className="detail">
       <Helmet>
@@ -14,7 +14,10 @@ export default ({ data }) => {
           {props.nameEnglish || props.name}
         </title>
         <meta name="description" content={props.description} />
-        <meta property="og:url" content={props.fields.canonical} />
+        <meta
+          property="og:url"
+          content={metadata.baseUrl + props.fields.canonical}
+        />
         <meta property="og:image" content="" />
         <meta
           property="og:title"
@@ -81,6 +84,11 @@ export const query = graphql`
       nameEnglish
       fields {
         canonical
+      }
+    }
+    site {
+      siteMetadata {
+        baseUrl
       }
     }
   }

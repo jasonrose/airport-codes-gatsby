@@ -14,12 +14,15 @@
   "license": "MIT",
   "main": "n/a",
   "scripts": {
-    "build": "gatsby build --prefix-paths",
-    "start": "gatsby develop"
+    "build": "BASE_URL=https://jasonrose.github.io gatsby build --prefix-paths",
+    "start": "BASE_URL=http://localhost:8000 gatsby develop",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d public"
   },
   "devDependencies": {
     "gatsby-source-filesystem": "^1.5.11",
     "gatsby-transformer-json": "^1.0.14",
+    "gh-pages": "^1.1.0",
     "prettier": "^1.10.2",
     "react-markdown": "^3.1.4"
   }
