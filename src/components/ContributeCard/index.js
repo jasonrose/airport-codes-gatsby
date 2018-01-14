@@ -5,7 +5,11 @@ import "./index.styl";
 class ContributeCard extends Component {
   render() {
     return (
-      <AirportCard className="card-contribute" label="contribute an airport" />
+      <AirportCard
+        className="card-contribute"
+        href="/contribute"
+        label="contribute an airport"
+      />
     );
   }
 }

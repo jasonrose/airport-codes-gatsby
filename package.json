@@ -5,6 +5,7 @@
   "version": "1.0.0",
   "author": "Jason Rose <jasoncrose@gmail.com>",
   "dependencies": {
+    "classnames": "^2.2.5",
     "gatsby": "^1.9.153",
     "gatsby-link": "^1.6.34",
     "gatsby-plugin-react-helmet": "^2.0.3",
