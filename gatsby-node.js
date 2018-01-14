@@ -15,7 +15,6 @@ exports.onCreateNode = (
 ) => {
   const { createNodeField } = boundActionCreators;
   if (node.internal.type === "AirportsJson") {
-    console.log({ pluginOptions });
     const slug = createFilePath({ node, getNode, basePath: "pages" });
     createNodeField({
       node,
