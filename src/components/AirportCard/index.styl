@@ -1,0 +1,40 @@
+@import "../../variables"
+li
+  background: black
+  float: left
+  width: 50%
+
+  a
+    padding: 80px 20px
+    display: block
+    position: relative
+    z-index: 2
+    background: black(.35)
+    font-size: 60px
+    font-weight: $font-weight-bold
+    text-align: center
+    text-transform: uppercase
+    text-shadow: 0 0 10px black(.7)
+    color: white
+
+    @media (max-width: 400px)
+      padding: 50px 20px
+      font-size: 46px
+
+    &:hover
+      background: transparent
+
+  @media (min-width: 600px)
+    width: 33.33%
+
+  @media (min-width: 800px)
+    width: 25%
+
+  @media (min-width: 1100px)
+    width: 20%
+
+  @media (min-width: 1500px)
+    width: 16.66%
+
+  @media (min-width: 2000px)
+    width: 14.28%
