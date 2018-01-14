@@ -37,7 +37,12 @@ const AirportDetail = ({ data }) => {
           property="og:url"
           content={metadata.baseUrl + props.fields.canonical}
         />
-        <meta property="og:image" content="" />
+        <meta
+          property="og:image"
+          content={
+            metadata.baseURl + props.fields.canonical + backgroundImages[0][0]
+          }
+        />
         <meta
           property="og:title"
           content={`${props.id.toUpperCase()} - ${props.nameEnglish ||
@@ -45,50 +50,61 @@ const AirportDetail = ({ data }) => {
         />
         <meta property="og:description" content={props.description} />
         <meta name="twitter:card" content="summary" />
+        <style>
+          {`
+          @media only screen {
+            .detail {
+              background-image: url(${data.detailImage.sizes.base64})
+            }
+          }
+          `}
+        </style>
         {backgroundImages}
       </Helmet>
       <Link className="overlay" to="/" />
-      <article className="detail-info">
-        <nav>
-          <Link to="/airports/random" className="random">
-            Random Airport
-          </Link>
-          <Link to="/" className="close-detail">
-            Close
-          </Link>
-        </nav>
-        <h1>{props.id}</h1>
-        <h2>{props.name}</h2>
-        <h3>
-          <span className="city">{props.city}</span>
-          <span className="state">{props.stateShort}</span>
-          <span className="country">{props.country}</span>
-        </h3>
-        <ReactMarkdown className="description" source={props.description} />
-        <footer className="social">
-          <a
-            className="twitter"
-            href={`https://twitter.com/intent/tweet?url=${metadata.baseUrl +
-              props.fields
-                .canonical}&text=Making sense of those three-letter airport codes. ${props.id.toUpperCase()}`}
-          >
-            Share on <span>Twitter</span>
-          </a>
-          <a
-            className="facebook"
-            href={`https://www.facebook.com/sharer/sharer.php?u=${metadata.baseUrl +
-              props.fields.canonical}`}
-          >
-            Share on <span>facebook</span>
-          </a>
+      <div className="container">
+        <article className="detail-info">
+          <nav>
+            <Link to="/airports/random" className="random">
+              Random Airport
+            </Link>
+            <Link to="/" className="close-detail">
+              Close
+            </Link>
+          </nav>
+          <h1>{props.id}</h1>
+          <h2>{props.name}</h2>
+          <h3>
+            <span className="city">{props.city}</span>
+            <span className="state">{props.stateShort}</span>
+            <span className="country">{props.country}</span>
+          </h3>
+          <ReactMarkdown className="description" source={props.description} />
+          <footer className="social">
+            <a
+              className="twitter"
+              href={`https://twitter.com/intent/tweet?url=${metadata.baseUrl +
+                props.fields
+                  .canonical}&text=Making sense of those three-letter airport codes. ${props.id.toUpperCase()}`}
+            >
+              Share on <span>Twitter</span>
+            </a>
+            <a
+              className="facebook"
+              href={`https://www.facebook.com/sharer/sharer.php?u=${metadata.baseUrl +
+                props.fields.canonical}`}
+            >
+              Share on <span>facebook</span>
+            </a>
+          </footer>
+        </article>
+        <Link className="back" to="/">
+          Airport Codes
+        </Link>
+        <footer className="photo-credit">
+          photo by <a href={props.imageCreditLink}>{props.imageCredit}</a>
         </footer>
-      </article>
-      <Link className="back" to="/">
-        Airport Codes
-      </Link>
-      <footer className="photo-credit">
-        photo by <a href={props.imageCreditLink}>{props.imageCredit}</a>
-      </footer>
+      </div>
     </section>
   );
 };
@@ -117,7 +133,7 @@ export const query = graphql`
         baseUrl
       }
     }
-    detailImage: imageSharp(id: { regex: "/aal/" }) {
+    detailImage: imageSharp(id: { regex: $slug }) {
       sizes(maxWidth: 1240) {
         ...GatsbyImageSharpSizes
       }
