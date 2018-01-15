@@ -1,6 +1,10 @@
 module.exports = {
   siteMetadata: {
     title: "Gatsby Default Starter",
+    appPath:
+      process.env.BASE_URL.indexOf("localhost") === -1
+        ? ""
+        : process.env.BASE_URL + "/airport-codes-gatsby",
     baseUrl: process.env.BASE_URL
   },
   pathPrefix: "/airport-codes-gatsby",

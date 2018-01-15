@@ -35,7 +35,7 @@ const AirportDetail = ({ data }) => {
         <meta property="og:type" content="website" />
         <meta
           property="og:url"
-          content={metadata.baseUrl + props.fields.canonical}
+          content={metadata.appPath + props.fields.canonical}
         />
         <meta
           property="og:image"
@@ -81,7 +81,7 @@ const AirportDetail = ({ data }) => {
           <footer className="social">
             <a
               className="twitter"
-              href={`https://twitter.com/intent/tweet?url=${metadata.baseUrl +
+              href={`https://twitter.com/intent/tweet?url=${metadata.appPath +
                 props.fields
                   .canonical}&text=Making sense of those three-letter airport codes. ${props.id.toUpperCase()}`}
             >
@@ -89,7 +89,7 @@ const AirportDetail = ({ data }) => {
             </a>
             <a
               className="facebook"
-              href={`https://www.facebook.com/sharer/sharer.php?u=${metadata.baseUrl +
+              href={`https://www.facebook.com/sharer/sharer.php?u=${metadata.appPath +
                 props.fields.canonical}`}
             >
               Share on <span>facebook</span>
@@ -128,6 +128,7 @@ export const query = graphql`
     }
     site {
       siteMetadata {
+        appPath
         baseUrl
       }
     }
