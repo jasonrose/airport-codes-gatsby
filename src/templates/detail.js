@@ -40,7 +40,7 @@ const AirportDetail = ({ data }) => {
         <meta
           property="og:image"
           content={
-            metadata.baseURl + props.fields.canonical + backgroundImages[0][0]
+            metadata.baseUrl + props.fields.canonical + srcSetLines[0][0]
           }
         />
         <meta

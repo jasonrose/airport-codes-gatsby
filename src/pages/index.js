@@ -7,7 +7,10 @@ const IndexPage = ({ data }) => {
   return (
     <section>
       <Header />
-      <AirportList airports={data.allAirportsJson.edges} />
+      <AirportList
+        airports={data.allAirportsJson.edges}
+        thumbnails={data.imagePreviews.edges}
+      />
     </section>
   );
 };
@@ -22,6 +25,16 @@ export const query = graphql`
           id
           fields {
             canonical
+          }
+        }
+      }
+    }
+    imagePreviews: allImageSharp {
+      edges {
+        node {
+          id
+          sizes {
+            base64
           }
         }
       }
